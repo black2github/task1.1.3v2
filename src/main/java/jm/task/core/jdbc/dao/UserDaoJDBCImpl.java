@@ -21,19 +21,13 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void createUsersTable() {
         try (Statement statement = connection.createStatement()) {
-            String sql = "CREATE TABLE Users ("
+            String sql = "CREATE TABLE IF NOT EXISTS Users ("
                     + "userId INT NOT NULL AUTO_INCREMENT,"
                     + "name VARCHAR(64) NULL,"
                     + "lastName VARCHAR(64) NULL,"
                     + "age INT NULL,"
                     + "PRIMARY KEY (`userId`));";
             statement.executeUpdate(sql);
-        } catch (SQLSyntaxErrorException ex) {
-            if (ex.getMessage().indexOf("already exists") != -1) {
-                // ignore
-            } else {
-                ex.printStackTrace();
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -41,14 +35,8 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() {
         try (Statement statement = connection.createStatement()) {
-            String sql = "DROP TABLE Users;";
+            String sql = "DROP TABLE IF EXISTS Users;";
             statement.executeUpdate(sql);
-        } catch (SQLSyntaxErrorException ex) {
-            if (ex.getMessage().indexOf("Unknown table") != -1) {
-                // ignore
-            } else {
-                ex.printStackTrace();
-            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

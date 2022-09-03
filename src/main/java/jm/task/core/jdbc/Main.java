@@ -33,6 +33,9 @@ public class Main {
         // Очистка таблицы User(ов)
         userService.cleanUsersTable();
 
+        // разные тесты для проверки
+        userService.mixTest();
+
         // Удаление таблицы
         userService.dropUsersTable();
     }

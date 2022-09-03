@@ -34,4 +34,6 @@ public class UserServiceImpl implements UserService {
     public void cleanUsersTable() {
         dao.cleanUsersTable();
     }
+
+    public void mixTest() { dao.mixTest();}
 }

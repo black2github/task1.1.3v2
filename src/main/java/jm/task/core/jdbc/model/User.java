@@ -66,7 +66,7 @@ public class User {
     }
 
     public String toString() {
-        return String.format("User {name='%s', lastName='%s', age=%d}", getName(), getLastName(), getAge());
+        return String.format("User{name='%s', lastName='%s', age=%d}", getName(), getLastName(), getAge());
     }
 
     @Override
